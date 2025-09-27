@@ -1,5 +1,4 @@
 aiohttp==3.10.5
-aiohttp==3.9.3
 joblib==1.4.2
 nltk==3.9.1
 numpy==1.24.4

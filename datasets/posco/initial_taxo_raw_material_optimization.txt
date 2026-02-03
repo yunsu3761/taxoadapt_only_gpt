@@ -1,0 +1,38 @@
+Label: cost-effective_low-carborn_steel_technologies
+Dimension: raw_material_optimization
+Description: None
+Level: 0
+Source: Initial
+----------------------------------------
+Children:
+     Label: increased_use_of_iron_ore_pellets
+     Dimension: raw_material_optimization
+     Description: This approach focuses on enhancing the use of iron ore pellets in the blast furnace process to improve the efficiency of iron production while reducing carbon emissions.
+     Level: 1
+     Source: Initial
+     ----------------------------------------
+     Label: higher_proportion_of_hot_briquetted_iron_(hbi)
+     Dimension: raw_material_optimization
+     Description: Utilizing a greater share of hot briquetted iron in the raw material mix helps to lower carbon footprints by providing a more efficient and cleaner source of iron.
+     Level: 1
+     Source: Initial
+     ----------------------------------------
+     Label: expanded_use_of_scrap_steel
+     Dimension: raw_material_optimization
+     Description: Increasing the input of recycled scrap steel into the production process minimizes the need for virgin materials, thereby reducing overall carbon emissions associated with steelmaking.
+     Level: 1
+     Source: Initial
+     ----------------------------------------
+     Label: utilization_of_cao–mgo_containing_pellets
+     Dimension: raw_material_optimization
+     Description: Incorporating pellets that contain calcium oxide and magnesium oxide can enhance the chemical reactions in the blast furnace, leading to improved efficiency and lower carbon output.
+     Level: 1
+     Source: Initial
+     ----------------------------------------
+     Label: application_of_biomass-based_carbon_sources
+     Dimension: raw_material_optimization
+     Description: Integrating biomass-derived carbon sources into the raw material mix can significantly reduce reliance on fossil fuels, contributing to lower carbon emissions during steel production.
+     Level: 1
+     Source: Initial
+     ----------------------------------------
+----------------------------------------

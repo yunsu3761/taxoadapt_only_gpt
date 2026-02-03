@@ -1,0 +1,38 @@
+Label: cost-effective_low-carborn_steel_technologies
+Dimension: energy_efficiency_improvement
+Description: None
+Level: 0
+Source: Initial
+----------------------------------------
+Children:
+     Label: coke_dry_quenching_(cdq)
+     Dimension: energy_efficiency_improvement
+     Description: Coke Dry Quenching is a technology that recovers heat from hot coke, improving energy efficiency and reducing carbon emissions by utilizing the recovered heat for steam generation or power production.
+     Level: 1
+     Source: Initial
+     ----------------------------------------
+     Label: advanced_oven_sealing
+     Dimension: energy_efficiency_improvement
+     Description: Advanced Oven Sealing techniques enhance the thermal efficiency of coke ovens by minimizing heat loss, thereby reducing energy consumption and lowering carbon emissions during the coke-making process.
+     Level: 1
+     Source: Initial
+     ----------------------------------------
+     Label: process_waste_heat_recovery
+     Dimension: energy_efficiency_improvement
+     Description: Process Waste Heat Recovery systems capture and reuse waste heat generated during coke-making and sintering, significantly improving overall energy efficiency and contributing to lower carbon emissions.
+     Level: 1
+     Source: Initial
+     ----------------------------------------
+     Label: flue_gas_recirculation_(fgr)
+     Dimension: energy_efficiency_improvement
+     Description: Flue Gas Recirculation is a method used in sintering processes that recycles flue gases back into the system, enhancing energy efficiency and reducing the carbon footprint by lowering the need for additional fuel.
+     Level: 1
+     Source: Initial
+     ----------------------------------------
+     Label: sinter_cooler_heat_recovery
+     Dimension: energy_efficiency_improvement
+     Description: Sinter Cooler Heat Recovery technologies capture heat from the sinter cooling process, allowing for its reuse in other stages of production, thus improving energy efficiency and reducing overall carbon emissions.
+     Level: 1
+     Source: Initial
+     ----------------------------------------
+----------------------------------------

@@ -8,7 +8,7 @@ import openai
 from openai import OpenAI
 from vllm.sampling_params import GuidedDecodingParams
 
-openai_key = os.getenv('OPENAI_API_KEY', 'REDACTED_OPENAI_KEY')
+openai_key = os.getenv('OPENAI_API_KEY')
 
 
 # map each term in text to word_id

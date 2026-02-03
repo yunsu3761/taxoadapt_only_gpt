@@ -1,0 +1,38 @@
+Label: cost-effective_low-carborn_steel_technologies
+Dimension: fuel_and_carbon_source_substitution
+Description: None
+Level: 0
+Source: Initial
+----------------------------------------
+Children:
+     Label: waste_plastic_injection
+     Dimension: fuel_and_carbon_source_substitution
+     Description: This technology involves the injection of waste plastics into the coke-making process, effectively substituting conventional carbon sources and reducing fossil fuel consumption.
+     Level: 1
+     Source: Initial
+     ----------------------------------------
+     Label: biochar_application
+     Dimension: fuel_and_carbon_source_substitution
+     Description: Utilizing biochar as a carbon source in the blast furnace process, this method enhances carbon efficiency while promoting the use of renewable materials.
+     Level: 1
+     Source: Initial
+     ----------------------------------------
+     Label: biomass-derived_gas_utilization
+     Dimension: fuel_and_carbon_source_substitution
+     Description: This approach incorporates gases derived from biomass as a partial substitute for carbon-intensive fuels, contributing to lower carbon emissions in steel production.
+     Level: 1
+     Source: Initial
+     ----------------------------------------
+     Label: rubber_replacement
+     Dimension: fuel_and_carbon_source_substitution
+     Description: The use of rubber waste as an alternative carbon source in the coke-making process helps to minimize reliance on traditional fossil fuels while addressing waste management issues.
+     Level: 1
+     Source: Initial
+     ----------------------------------------
+     Label: biocoke_production
+     Dimension: fuel_and_carbon_source_substitution
+     Description: Biocoke, produced from renewable biomass, serves as a sustainable substitute for conventional coke, reducing the carbon footprint of steel manufacturing.
+     Level: 1
+     Source: Initial
+     ----------------------------------------
+----------------------------------------

@@ -1,0 +1,38 @@
+Label: cost-effective_low-carborn_steel_technologies
+Dimension: fuel_and_heat_source_substitution
+Description: None
+Level: 0
+Source: Initial
+----------------------------------------
+Children:
+     Label: biochar_substitution
+     Dimension: fuel_and_heat_source_substitution
+     Description: This technology involves replacing traditional solid fuels like anthracite with biochar, a renewable carbon-rich material, to significantly lower carbon emissions during the sintering process.
+     Level: 1
+     Source: Initial
+     ----------------------------------------
+     Label: hydrogen_injection_sintering
+     Dimension: fuel_and_heat_source_substitution
+     Description: This method utilizes hydrogen as a heat source in the sintering process, offering a cleaner alternative that reduces reliance on fossil fuels and minimizes carbon output.
+     Level: 1
+     Source: Initial
+     ----------------------------------------
+     Label: lng_injection_technology
+     Dimension: fuel_and_heat_source_substitution
+     Description: By injecting liquefied natural gas (LNG) into the upper sinter bed, this technology provides a lower-carbon heat source that enhances energy efficiency and reduces greenhouse gas emissions.
+     Level: 1
+     Source: Initial
+     ----------------------------------------
+     Label: hybrid_heat_source_systems
+     Dimension: fuel_and_heat_source_substitution
+     Description: These systems combine multiple heat sources, such as renewable energy and fossil fuels, to optimize energy use and lower carbon emissions in the sintering process.
+     Level: 1
+     Source: Initial
+     ----------------------------------------
+     Label: waste_heat_recovery_systems
+     Dimension: fuel_and_heat_source_substitution
+     Description: This approach captures and utilizes waste heat generated during the sintering process, reducing the need for additional fuel and lowering overall carbon emissions.
+     Level: 1
+     Source: Initial
+     ----------------------------------------
+----------------------------------------

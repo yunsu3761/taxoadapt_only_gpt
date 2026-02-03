@@ -1,0 +1,38 @@
+Label: cost-effective_low-carborn_steel_technologies
+Dimension: process_and_system_advancement
+Description: None
+Level: 0
+Source: Initial
+----------------------------------------
+Children:
+     Label: oxygen_blast_furnace_operation
+     Dimension: process_and_system_advancement
+     Description: This technology enhances the traditional blast furnace process by injecting pure oxygen, which improves combustion efficiency and reduces carbon emissions during ironmaking.
+     Level: 1
+     Source: Initial
+     ----------------------------------------
+     Label: carbon_circulation_blast_furnaces
+     Dimension: process_and_system_advancement
+     Description: These innovative furnaces recycle carbon dioxide produced during the ironmaking process, utilizing it to enhance the reduction of iron ore and minimize overall carbon footprint.
+     Level: 1
+     Source: Initial
+     ----------------------------------------
+     Label: direct_reduced_iron_(dri)_processes
+     Dimension: process_and_system_advancement
+     Description: DRI technologies utilize natural gas or hydrogen to reduce iron ore directly, offering a lower-carbon alternative to traditional blast furnace methods while maintaining cost-effectiveness.
+     Level: 1
+     Source: Initial
+     ----------------------------------------
+     Label: hybrid_steelmaking_systems
+     Dimension: process_and_system_advancement
+     Description: These systems combine traditional blast furnace operations with electric arc furnace technology, optimizing energy use and reducing emissions through the integration of renewable energy sources.
+     Level: 1
+     Source: Initial
+     ----------------------------------------
+     Label: next-generation_ironmaking_configurations
+     Dimension: process_and_system_advancement
+     Description: This category encompasses advanced designs and operational strategies for blast furnaces that improve gas utilization and enhance overall efficiency, leading to lower carbon emissions in steel production.
+     Level: 1
+     Source: Initial
+     ----------------------------------------
+----------------------------------------

@@ -1,7 +1,7 @@
 from collections import deque
 from enrichment import enrich_node_prompt
-from classification import classify_prompt
-from model_definitions import promptLLM
+from classification import classify_prompt, init_classify_prompt, main_classify_prompt
+from model_definitions import promptLLM, constructPrompt
 from prompts import EnrichSchema
 import json
 from utils import clean_json_string
@@ -150,7 +150,7 @@ class Node:
         # Which papers are classified to the current node?
         prompts = []
         for paper_id, paper in self.papers.items():
-            prompts.append(classify_prompt(self, paper))
+            prompts.append(constructPrompt(args, init_classify_prompt, main_classify_prompt(self, paper)))
 
         output = promptLLM(args, prompts, schema=ClassifySchema, max_new_tokens=3000)
         output_dict = [json.loads(clean_json_string(c)) if "```" in c else json.loads(c.strip()) for c in output]
@@ -231,6 +231,56 @@ class Node:
     def __repr__(self):
         return f"Node(label={self.label}, dim={self.dimension}, description={self.description}, level={self.level})"
     
+    def to_dict(self):
+        """
+        Serialize the node and its children to a dictionary.
+        """
+        return {
+            'id': self.id,
+            'label': self.label,
+            'dimension': self.dimension,
+            'description': self.description,
+            'level': self.level,
+            'source': self.source,
+            'children': {child_label: child.to_dict() for child_label, child in self.children.items()}
+        }
+    
+    @classmethod
+    def from_dict(cls, data, id2node, label2node, parent=None):
+        """
+        Deserialize a node and its children from a dictionary.
+        """
+        node_id = data['id']
+        
+        # Check if node already exists
+        if node_id in id2node:
+            return id2node[node_id]
+        
+        # Create new node
+        node = cls(
+            id=node_id,
+            label=data['label'],
+            dimension=data['dimension'],
+            description=data.get('description'),
+            source=data.get('source')
+        )
+        
+        # Register node
+        id2node[node_id] = node
+        label2node[f"{node.label}_{node.dimension}"] = node
+        
+        # Add parent if provided
+        if parent:
+            node.parents.append(parent)
+            node.level = parent.level + 1
+        
+        # Recursively create children
+        for child_label, child_data in data.get('children', {}).items():
+            child_node = cls.from_dict(child_data, id2node, label2node, parent=node)
+            node.children[child_label] = child_node
+        
+        return node
+    
 
 class DAG:
     def __init__(self, root, dim):
@@ -303,7 +353,7 @@ class DAG:
             # Which papers are classified to the current node?
             prompts = []
             for paper_id, paper in papers.items():
-                prompts.append(classify_prompt(current_node, paper))
+                prompts.append(constructPrompt(args, init_classify_prompt, main_classify_prompt(current_node, paper)))
 
             output = promptLLM(args, prompts, schema=ClassifySchema, max_new_tokens=1500)
             output_dict = [json.loads(clean_json_string(c)) if "```" in c else json.loads(c.strip()) for c in output]

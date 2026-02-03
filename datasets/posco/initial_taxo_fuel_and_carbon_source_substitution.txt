@@ -1,0 +1,38 @@
+Label: cost-effective_low-carborn_steel_technologies
+Dimension: fuel_and_carbon_source_substitution
+Description: None
+Level: 0
+Source: Initial
+----------------------------------------
+Children:
+     Label: waste_plastic_injection
+     Dimension: fuel_and_carbon_source_substitution
+     Description: This technology involves the injection of waste plastics into the coke-making process, effectively reducing the reliance on fossil fuels while utilizing materials that would otherwise contribute to landfill waste.
+     Level: 1
+     Source: Initial
+     ----------------------------------------
+     Label: biochar_application
+     Dimension: fuel_and_carbon_source_substitution
+     Description: The application of biochar, a carbon-rich material produced from biomass, serves as a sustainable alternative to traditional carbon sources in steel production, enhancing carbon sequestration and reducing emissions.
+     Level: 1
+     Source: Initial
+     ----------------------------------------
+     Label: biomass-derived_gas_utilization
+     Dimension: fuel_and_carbon_source_substitution
+     Description: Utilizing gases derived from biomass as a partial substitute for carbon-intensive fuels in the blast furnace process helps lower the carbon footprint of steel production while maintaining efficiency.
+     Level: 1
+     Source: Initial
+     ----------------------------------------
+     Label: biocoke_production
+     Dimension: fuel_and_carbon_source_substitution
+     Description: Biocoke, produced from renewable biomass feedstocks, can replace conventional coke in the ironmaking process, offering a lower carbon alternative that supports sustainable steel production.
+     Level: 1
+     Source: Initial
+     ----------------------------------------
+     Label: rubber_injection_technology
+     Dimension: fuel_and_carbon_source_substitution
+     Description: This innovative approach incorporates waste rubber into the coke-making process, reducing the need for fossil fuels and promoting circular economy practices in the steel industry.
+     Level: 1
+     Source: Initial
+     ----------------------------------------
+----------------------------------------

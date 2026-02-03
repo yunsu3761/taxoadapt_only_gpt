@@ -17,15 +17,16 @@ class EnrichSchema(BaseModel):
     commonsense_sentences: conset(str, min_length=10, max_length=50)
 # NLP
 dimension_definitions = {
-    'tasks': """Task: we assume that all papers are associated with a specific task(s). Always output "Task" as one of the paper types unless you are absolutely sure the paper does not address any task.""",
-    'methodologies': """Methodology: a paper that introduces, explains, or refines a method or approach, providing theoretical foundations, implementation details, and empirical evaluations to advance the state-of-the-art or solve specific problems.""",
-    'datasets': """Datasets: introduces a new dataset, detailing its creation, structure, and intended use, while providing analysis or benchmarks to demonstrate its relevance and utility. It focuses on advancing research by addressing gaps in existing datasets/performance of SOTA models or enabling new applications in the field.""",
-    'evaluation_methods': """Evaluation Methods: a paper that assesses the performance, limitations, or biases of models, methods, or datasets using systematic experiments or analyses. It focuses on benchmarking, comparative studies, or proposing new evaluation metrics or frameworks to provide insights and improve understanding in the field.""",
-    'real_world_domains': """Real-World Domains: demonstrates the use of techniques to solve specific, real-world problems or address specific domain challenges. It focuses on practical implementation, impact, and insights gained from applying methods in various contexts. Examples include: product recommendation systems, medical record summarization, etc."""
+    'energy_efficiency_improvement': """Energy Efficiency Improvement: technologies primarily applied in the coke-making and sintering processes that enhance energy efficiency and reduce carbon emissions through improved heat utilization and waste energy recovery. This dimension includes coke-making measures such as coke dry quenching (CDQ), advanced oven sealing, and process waste heat recovery, as well as sintering technologies such as flue gas recirculation (FGR), sinter cooler heat recovery, and low-temperature sintering techniques.""",
+    'fuel_and_carbon_source_substitution': """Fuel and Carbon Source Substitution: technologies mainly implemented in the coke-making process that reduce fossil-based carbon consumption by replacing conventional coal and coke inputs with alternative carbon sources. This dimension includes the injection of waste plastics or rubber, the application of biochar or biocoke, and the use of biomass-derived gases to partially substitute carbon-intensive fuels while maintaining the conventional blast furnace ironmaking route.""",
+    'fuel_and_heat_source_substitution': """Fuel and Heat Source Substitution: technologies primarily applied in the sintering process that reduce carbon emissions by substituting conventional solid fuels and heat sources with lower-carbon alternatives. This dimension includes replacing anthracite with biochar and adopting hybrid heat-source sintering concepts such as hydrogen or LNG injection into the upper sinter bed.""",
+    'raw_material_optimization': """Raw Material Optimization: technologies applied in the blast furnace process that focus on optimizing the composition, quality, and charging ratios of raw materials to reduce carbon emissions and improve process efficiency. This dimension includes increasing the share of pellets and HBI, expanding iron scrap input, utilizing CaO–MgO containing pellets, and applying biomass-based carbon sources to enhance burden reducibility and permeability.""",
+    'reduction_efficiency_enhancement': """Reduction Efficiency Enhancement: technologies implemented in the blast furnace process that aim to improve the efficiency of reduction reactions and lower carbon consumption per unit of hot metal produced. This dimension includes the application of iron ore–coal composite agglomerates, advanced PCI operation with increased pulverized coal injection rates, and improved coal injection behavior and distribution within the furnace.""",
+    'hydrogen_and_gas_injection': """Hydrogen and Gas Injection: technologies applied in the blast furnace process that reduce carbon emissions through the injection of alternative reducing gases and low-carbon fuels. This dimension includes hydrogen injection to support iron ore reduction and LNG or COG injection to partially replace conventional carbon-based fuels while maintaining blast furnace operation.""",
+    'process_and_system_advancement': """Process and System Advancement: technologies implemented in the blast furnace process that achieve low-carbon ironmaking through advanced process concepts and system-level innovations. This dimension includes oxygen blast furnace operation, carbon circulation blast furnaces, and other next-generation configurations that improve gas utilization and enable lower-carbon blast furnace ironmaking.""",
     }
-
 # bio
-# dimension_definitions = {
+
 #     'experimental_methods': """Experimental Methods: a paper that introduces, explains, or significantly refines experimental techniques, protocols, laboratory methods, or biological assays, providing detailed descriptions and validations to improve accuracy, reproducibility, or insight in biological research.""",
 
 #     'datasets': """Datasets: a paper that introduces new biological datasets (e.g., genomic sequences, imaging data, ecological observations), detailing their generation, structure, annotation, and intended use, and provides initial analyses or benchmarks demonstrating their value in addressing gaps or enabling new biological insights.""",
@@ -39,11 +40,13 @@ dimension_definitions = {
 
 # NLP
 node_dimension_definitions = {
-    'tasks': """Defines and categorizes research efforts aimed at solving specific problems or objectives within a given field, such as classification, prediction, or optimization.""",
-    'methodologies': """Types of techniques, models, or approaches used to address various challenges, including algorithmic innovations, frameworks, and optimization strategies.""",
-    'datasets': """Types of methods to structure data collections used in research, including ways to curate or analyze datasets, detailing their properties, intended use, and role in advancing the field.""",
-    'evaluation_methods': """Types of methods for assessing the performance of models, datasets, or techniques, including new metrics, benchmarking techniques, or comparative performance studies.""",
-    'real_world_domains': """Types of practical or industry-specific domains in which techniques and methodologies can be applied, exploring implementation, impact, and challenges of real-world problems."""
+    'energy_efficiency_improvement': """Energy Efficiency Improvement: technologies primarily applied in the coke-making and sintering processes that enhance energy efficiency and reduce carbon emissions through improved heat utilization and waste energy recovery. This dimension includes coke-making measures such as coke dry quenching (CDQ), advanced oven sealing, and process waste heat recovery, as well as sintering technologies such as flue gas recirculation (FGR), sinter cooler heat recovery, and low-temperature sintering techniques.""",
+    'fuel_and_carbon_source_substitution': """Fuel and Carbon Source Substitution: technologies mainly implemented in the coke-making process that reduce fossil-based carbon consumption by replacing conventional coal and coke inputs with alternative carbon sources. This dimension includes the injection of waste plastics or rubber, the application of biochar or biocoke, and the use of biomass-derived gases to partially substitute carbon-intensive fuels while maintaining the conventional blast furnace ironmaking route.""",
+    'fuel_and_heat_source_substitution': """Fuel and Heat Source Substitution: technologies primarily applied in the sintering process that reduce carbon emissions by substituting conventional solid fuels and heat sources with lower-carbon alternatives. This dimension includes replacing anthracite with biochar and adopting hybrid heat-source sintering concepts such as hydrogen or LNG injection into the upper sinter bed.""",
+    'raw_material_optimization': """Raw Material Optimization: technologies applied in the blast furnace process that focus on optimizing the composition, quality, and charging ratios of raw materials to reduce carbon emissions and improve process efficiency. This dimension includes increasing the share of pellets and HBI, expanding iron scrap input, utilizing CaO–MgO containing pellets, and applying biomass-based carbon sources to enhance burden reducibility and permeability.""",
+    'reduction_efficiency_enhancement': """Reduction Efficiency Enhancement: technologies implemented in the blast furnace process that aim to improve the efficiency of reduction reactions and lower carbon consumption per unit of hot metal produced. This dimension includes the application of iron ore–coal composite agglomerates, advanced PCI operation with increased pulverized coal injection rates, and improved coal injection behavior and distribution within the furnace.""",
+    'hydrogen_and_gas_injection': """Hydrogen and Gas Injection: technologies applied in the blast furnace process that reduce carbon emissions through the injection of alternative reducing gases and low-carbon fuels. This dimension includes hydrogen injection to support iron ore reduction and LNG or COG injection to partially replace conventional carbon-based fuels while maintaining blast furnace operation.""",
+    'process_and_system_advancement': """Process and System Advancement: technologies implemented in the blast furnace process that achieve low-carbon ironmaking through advanced process concepts and system-level innovations. This dimension includes oxygen blast furnace operation, carbon circulation blast furnaces, and other next-generation configurations that improve gas utilization and enable lower-carbon blast furnace ironmaking.""",
 }
 # node_dimension_definitions = {
 #     'experimental_methods': """Types of experimental techniques, protocols, laboratory procedures, or biological assays introduced or significantly refined, detailing their design, validation, and implementation to improve accuracy, reproducibility, or effectiveness in biological research.""",
@@ -86,34 +89,28 @@ def multi_dim_prompt(node):
     return system_instruction, main_prompt, json_output_format
 
 
-type_cls_system_instruction = """You are a helpful multi-label classification assistant which helps me label papers based on their paper type. They may be more than one.
+type_cls_system_instruction = """You are a helpful multi-label classification assistant which helps me classify steel technology papers based on low-carbon steel technology dimensions. Papers may belong to multiple dimensions.
 
-Paper types (type:definition):
+Steel Technology Dimensions (dimension:definition):
 
-1. Task: we assume that all papers are associated with a specific task(s). Always output "Task" as one of the paper types unless you are absolutely sure the paper does not address any task.
-2. Methodology: a paper that introduces, explains, or refines a method or approach, providing theoretical foundations, implementation details, and empirical evaluations to advance the state-of-the-art or solve specific problems. 
-3. Datasets: introduces a new dataset, detailing its creation, structure, and intended use, while providing analysis or benchmarks to demonstrate its relevance and utility. It focuses on advancing research by addressing gaps in existing datasets/performance of SOTA models or enabling new applications in the field. 
-4. Evaluation Methods: a paper that assesses the performance, limitations, or biases of models, methods, or datasets using systematic experiments or analyses. It focuses on benchmarking, comparative studies, or proposing new evaluation metrics or frameworks to provide insights and improve understanding in the field. 
-5. Real-World Domains: demonstrates the use of techniques to solve specific, real-world problems or address specific domain challenges. It focuses on practical implementation, impact, and insights gained from applying methods in various contexts. Examples include: product recommendation systems, medical record summarization, etc.
-"""
+1. Energy Efficiency Improvement: Energy Efficiency Improvement: technologies primarily applied in the coke-making and sintering processes that enhance energy efficiency and reduce carbon emissions through improved heat utilization and waste energy recovery. This dimension includes coke-making measures such as coke dry quenching (CDQ), advanced oven sealing, and process waste heat recovery, as well as sintering technologies such as flue gas recirculation (FGR), sinter cooler heat recovery, and low-temperature sintering techniques.
+2. Fuel And Carbon Source Substitution: Fuel and Carbon Source Substitution: technologies mainly implemented in the coke-making process that reduce fossil-based carbon consumption by replacing conventional coal and coke inputs with alternative carbon sources. This dimension includes the injection of waste plastics or rubber, the application of biochar or biocoke, and the use of biomass-derived gases to partially substitute carbon-intensive fuels while maintaining the conventional blast furnace ironmaking route.
+3. Fuel And Heat Source Substitution: Fuel and Heat Source Substitution: technologies primarily applied in the sintering process that reduce carbon emissions by substituting conventional solid fuels and heat sources with lower-carbon alternatives. This dimension includes replacing anthracite with biochar and adopting hybrid heat-source sintering concepts such as hydrogen or LNG injection into the upper sinter bed.
+4. Raw Material Optimization: Raw Material Optimization: technologies applied in the blast furnace process that focus on optimizing the composition, quality, and charging ratios of raw materials to reduce carbon emissions and improve process efficiency. This dimension includes increasing the share of pellets and HBI, expanding iron scrap input, utilizing CaO–MgO containing pellets, and applying biomass-based carbon sources to enhance burden reducibility and permeability.
+5. Reduction Efficiency Enhancement: Reduction Efficiency Enhancement: technologies implemented in the blast furnace process that aim to improve the efficiency of reduction reactions and lower carbon consumption per unit of hot metal produced. This dimension includes the application of iron ore–coal composite agglomerates, advanced PCI operation with increased pulverized coal injection rates, and improved coal injection behavior and distribution within the furnace.
+6. Hydrogen And Gas Injection: Hydrogen and Gas Injection: technologies applied in the blast furnace process that reduce carbon emissions through the injection of alternative reducing gases and low-carbon fuels. This dimension includes hydrogen injection to support iron ore reduction and LNG or COG injection to partially replace conventional carbon-based fuels while maintaining blast furnace operation.
+7. Process And System Advancement: Process and System Advancement: technologies implemented in the blast furnace process that achieve low-carbon ironmaking through advanced process concepts and system-level innovations. This dimension includes oxygen blast furnace operation, carbon circulation blast furnaces, and other next-generation configurations that improve gas utilization and enable lower-carbon blast furnace ironmaking."""
 
-# type_cls_system_instruction = """You are a helpful multi-label classification assistant which helps me label papers based on their paper type. They may be more than one.
-
-# Paper types (type:definition):
-
-# 1. Experimental Methods: a paper which introduces, explains, or significantly refines experimental techniques, protocols, laboratory methods, or biological assays, providing detailed descriptions and validations to improve accuracy, reproducibility, or insight in biological research.
-# 2. Datasets: a paper that introduces new biological datasets (e.g., genomic sequences, imaging data, ecological observations), detailing their generation, structure, annotation, and intended use, and provides initial analyses or benchmarks demonstrating their value in addressing gaps or enabling new biological insights.
-# 3. Theoretical Advances: a paper which proposes new biological theories, models, frameworks, or conceptual insights, supported by rigorous analysis, modeling, or experimental validation, aimed at improving fundamental understanding of biological systems. 
-# 4. Applications: a paper that demonstrates practical use of biological knowledge or techniques to address real-world problems in domains such as biomedicine (therapies, diagnostics, drug development), agriculture (crop improvement, pest control), or conservation (species protection, ecosystem management), focusing on practical impact and applied outcomes. 
-# 5. Evaluation Methods: A paper which systematically evaluates biological techniques, datasets, or computational methods, using benchmarking, comparative analyses, or novel evaluation metrics, to provide deeper insights into their effectiveness, limitations, or biases, thereby enhancing understanding and guiding future research.
-# """
+ 
 
 class TypeClsSchema(BaseModel):
-  tasks: bool
-  methodologies: bool
-  datasets: bool
-  evaluation_methods: bool
-  real_world_domains: bool
+  energy_efficiency_improvement: bool
+  fuel_and_carbon_source_substitution: bool
+  fuel_and_heat_source_substitution: bool
+  raw_material_optimization: bool
+  reduction_efficiency_enhancement: bool
+  hydrogen_and_gas_injection: bool
+  process_and_system_advancement: bool
 
 # class TypeClsSchema(BaseModel):
 #   experimental_methods: bool
@@ -123,24 +120,27 @@ class TypeClsSchema(BaseModel):
 #   evaluation_methods: bool
 
 def type_cls_main_prompt(paper):
-   out = f"""Given the following paper title and abstract, can you output a Pythonic list of all paper type labels relevant to this paper. 
+   out = f"""Given the following paper title and abstract, can you classify this steel technology paper according to the relevant dimensions. 
 
 "Title": "{paper.title}"
 "Abstract": "{paper.abstract}"
 
 Your output should be in the following JSON format:
 {{
-  "tasks": True,
-  "methodologies": <return True if the paper is a Methodology paper, False otherwise>,
-  "datasets": <return True if the paper is a Dataset paper, False otherwise>,
-  "evaluation_methods": <return True if the paper is an Evaluation paper, False otherwise>,
-  "real_world_domains": <return True if the paper is a Real-World Domain/Application paper, False otherwise>,
+  "energy_efficiency_improvement": true,
+  "fuel_and_carbon_source_substitution": true,
+  "fuel_and_heat_source_substitution": true,
+  "raw_material_optimization": true,
+  "reduction_efficiency_enhancement": true,
+  "hydrogen_and_gas_injection": true,
+  "process_and_system_advancement": true
 }}
 """
    return out
 
+"""
 # def type_cls_main_prompt(paper):
-#    out = f"""Given the following paper title and abstract, can you output a Pythonic list of all paper type labels relevant to this paper. 
+#    out = f"Given the following paper title and abstract, can you output a Pythonic list of all paper type labels relevant to this paper."
 
 # "Title": "{paper.title}"
 # "Abstract": "{paper.abstract}"

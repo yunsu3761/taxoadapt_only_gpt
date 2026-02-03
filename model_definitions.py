@@ -8,7 +8,7 @@ import openai
 from openai import OpenAI
 from vllm.sampling_params import GuidedDecodingParams
 
-openai_key = os.getenv('OPENAI_API_KEY')
+openai_key = os.getenv('OPENAI_API_KEY', 'REDACTED_OPENAI_KEY')
 
 
 # map each term in text to word_id
@@ -71,29 +71,50 @@ def constructPrompt(args, init_prompt, main_prompt):
 def initializeLLM(args):
 	args.client = {}
 
-	args.client['vllm'] = LLM(model="meta-llama/Meta-Llama-3.1-8B-Instruct", tensor_parallel_size=4, gpu_memory_utilization=0.95, 
-						   max_num_batched_tokens=4096, max_num_seqs=1000, enable_prefix_caching=True)
+	# Only initialize vLLM if we're using it and have CUDA available
+	if args.llm == 'vllm':
+		if not torch.cuda.is_available():
+			raise RuntimeError("vLLM requires CUDA GPUs, but none are available. Please use --llm gpt instead.")
+		
+		# Determine tensor_parallel_size based on available GPUs
+		gpu_count = torch.cuda.device_count()
+		tensor_parallel_size = min(3, gpu_count)  # Changed from 4 to 3 GPUs
+		
+		args.client['vllm'] = LLM(model="meta-llama/Meta-Llama-3.1-8B-Instruct", 
+							   tensor_parallel_size=tensor_parallel_size, 
+							   gpu_memory_utilization=0.95, 
+							   max_num_batched_tokens=8192, 
+							   max_num_seqs=1000, 
+							   enable_prefix_caching=True, 
+							   max_model_len=8192)
 
 	if args.llm == 'gpt':
 		args.client[args.llm] = OpenAI(api_key=openai_key)
 	
 	return args
 
-def promptGPT(args, prompts, schema=None, max_new_tokens=1024, json_mode=True, temperature=0.1, top_p=0.99):
+def promptGPT(args, prompts, schema=None, max_new_tokens=16384, json_mode=True, temperature=0.1, top_p=0.99):
 	outputs = []
+	model = 'gpt-4o-mini-2024-07-18'
+	
+	# gpt-5-nano only supports temperature=1
+	if 'gpt-5' in model.lower():
+		temperature = 1
+		top_p = 1
+	
 	for messages in tqdm(prompts):
 		if json_mode:
-			response = args.client['gpt'].chat.completions.create(model='gpt-4o-mini-2024-07-18', stream=False, messages=messages, 
+			response = args.client['gpt'].chat.completions.create(model=model, stream=False, messages=messages, 
 												response_format={"type": "json_object"}, temperature=temperature, top_p=top_p, 
-												max_tokens=max_new_tokens)
+												max_completion_tokens=max_new_tokens)
 		else:
-			response = args.client['gpt'].chat.completions.create(model='gpt-4o-mini-2024-07-18', stream=False, messages=messages, 
+			response = args.client['gpt'].chat.completions.create(model=model, stream=False, messages=messages, 
 											 temperature=temperature, top_p=top_p,
-											 max_tokens=max_new_tokens)
+											 max_completion_tokens=max_new_tokens)
 		outputs.append(response.choices[0].message.content)
 	return outputs
 
-def promptLlamaVLLM(args, prompts, schema=None, max_new_tokens=1024, temperature=0.1, top_p=0.99):
+def promptLlamaVLLM(args, prompts, schema=None, max_new_tokens=4096, temperature=0.1, top_p=0.99):
     if schema is None:
         sampling_params = SamplingParams(temperature=temperature, top_p=top_p, max_tokens=max_new_tokens)
     else:
@@ -108,9 +129,15 @@ def promptLlamaVLLM(args, prompts, schema=None, max_new_tokens=1024, temperature
 
     return outputs
 
-def promptLLM(args, prompts, schema=None, max_new_tokens=1024, json_mode=True, temperature=0.1, top_p=0.99):
+def promptLLM(args, prompts, schema=None, max_new_tokens=16384, json_mode=True, temperature=0.1, top_p=0.99):
+	print(f"[LLM] Using: {args.llm.upper()}")  # Debug log
 	if args.llm == 'gpt':
 		return promptGPT(args, prompts, schema, max_new_tokens, json_mode, temperature, top_p)
-	else:
+	elif args.llm == 'vllm':
+		if 'vllm' not in args.client:
+			raise RuntimeError(f"vLLM client not initialized. Please check that vLLM was properly initialized in initializeLLM(). "
+							   f"Current llm setting: {args.llm}, Available clients: {list(args.client.keys())}")
 		return promptLlamaVLLM(args, prompts, schema, max_new_tokens, temperature, top_p)
+	else:
+		raise ValueError(f"Unknown LLM type: {args.llm}. Supported types are 'gpt' and 'vllm'.")
 	
